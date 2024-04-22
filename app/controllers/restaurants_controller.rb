@@ -1,13 +1,23 @@
 class RestaurantsController < ApplicationController
-  before_action :set_restaurant, only: %i[ show edit update destroy ]
+  before_action :set_restaurant, only: %i[ show chef edit update destroy ]
+  #  %i[ show edit update destroy ] Makes an array of symbols.
 
   # GET /restaurants or /restaurants.json
   def index
     @restaurants = Restaurant.all
   end
 
+  def top
+    # SELECT * FROM restaurants WHERE rating = 5
+    @restaurants = Restaurant.where(rating: 5)
+  end
   # GET /restaurants/1 or /restaurants/1.json
   def show
+  end
+
+  def chef
+  # @restaurant = Restaurant.find(params:id)
+  @chef_name = @restaurant.chef_name
   end
 
   # GET /restaurants/new
