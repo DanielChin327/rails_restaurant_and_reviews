@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
+
   resources :restaurants do
+    resources :reviews, only: [:new, :create]
+    # This makes reviews need a restaurants to implment a new and create
+
     # Add routes that relate to restaurants here:
     collection do
       # Custom Index
